@@ -1,5 +1,5 @@
-#errorCatcher Echo
 #encoding UTF-8
+#errorCatcher Echo
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -11,7 +11,7 @@
 		<main>
 
 		<header>
-			<h1>Big Boy Weather</h1>
+			<img src="https://bigboy.us/other/bigboyweather.png" alt="Big Boy Weather" />
 			<div class='station-name'>$station.location</div>
 			<div class='station-time'>Last updated: $current.dateTime</div>
 		</header>
@@ -100,17 +100,19 @@
 				</p>
 			</div>
 
-		#if $day.rain.has_data
 			<div class='metric'>
 				<h4 class='metric-title'>Precipitation</h4>
+		#if $day.rain.sum.raw
 				<h5>Recent</h5>
 				<p><span class="metric-big">$current.rain.formatted</span><span class='metric-units'>$unit.label.rain</span></p>
 				<h5>Most intense</h5>
 				<p>$day.rainRate.max.formatted<span class='metric-units'>$unit.label.rainRate</span></p>
 				<h5>Total today</h5>
 				<p>$day.rain.sum.formatted</p>
-			</div>
+		#else
+				<p>No rain today!</p>
 		#end if
+			</div>
 
 		#if $day.UV.has_data
 			<div class='metric'>
