@@ -82,7 +82,22 @@ body {
 }
 
 .forecast {
+	display: flex;
+}
+
+.forecast h3 {
+}
+
+.forecast figure {
+	margin:1rem 1rem 0 0;
+}
+.forecast img {
+	width:200px;
+}
+
+.forecast pre {
 	white-space: pre-wrap;
+	clear:both;
 }
 
 footer p {
@@ -117,3 +132,8 @@ padding: 1rem 0;
 	font-weight: bold;
 }
 
+@media (max-width: 480px) {
+	body {
+		display: block;
+	}
+}

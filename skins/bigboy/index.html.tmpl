@@ -6,6 +6,7 @@
 		<meta charset="utf-8">
 		<title>$station.location Weather</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
+		<meta name="viewport" content="width=device-width">
 	</head>
 	<body>
 		<main>
@@ -17,6 +18,8 @@
 		</header>
 
 			<h3>Current Observations</h3>
+			<section class='metrics'>
+
 				<div class='metric'>
 					<h4 class='metric-title'>Temperature</h4>
 					<p><span class="metric-big">$current.outTemp.formatted<span class='metric-units'>$unit.label.outTemp</span></span></p>
@@ -144,7 +147,6 @@
 				<p>$day.inHumidity.min.formatted<span class='metric-units'>$unit.label.outHumidity</span></p>
 			</div>
 
-			<section class='metrics'>
 				<div class='metric'>
 					<p>sunrise:  $almanac.sunrise</p>
 					<p>sunset:  $almanac.sunset</p>
@@ -172,11 +174,16 @@
 				</div>
 
 		</section>
-		<section>
-			<h3>The Forecast</h3>
-			<pre class="forecast">
-			#include raw $Extras.forecast_path
-			</pre>
+		<section class="forecast">
+			<figure>
+				<img src="https://bigboy.us/other/weather-wizard.jpg" alt="wizard">
+			</figure>
+			<div>
+				<h3>The Forecast</h3>
+				<pre>
+				#include raw $Extras.forecast_path
+				</pre>
+			</div>
 		</section>
 
 		<h3>Almanac</h3>
