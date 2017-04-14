@@ -1,10 +1,38 @@
 #encoding UTF-8
 #errorCatcher Echo
+#import random
+#def relativeModifier($num, $factor)
+#if abs($num.raw) > $factor
+${random.choice(('a lot', 'mega', 'insanely'))}
+#elif abs($num.raw) > ($factor * 0.75)
+${random.choice(('much', 'a bunch', 'a good deal'))}
+#elif abs($num.raw) > ($factor * 0.5)
+${random.choice(('somewhat', 'kinda', 'subtly'))}
+#else
+${random.choice(('a bit', 'a little'))}
+#end if
+#end def
+#def either($num, $a, $b)
+#if $num.raw > 0
+$a
+#else
+$b
+#end if
+#end def
+#def dayPart()
+#set $hour = int($current.dateTime.format("%H"))
+#if $hour >= 12 and $hour <= 17
+yesterday afternoon#elif $hour >= 17 or $hour <= 5
+last night#else
+yesterday morning
+#end if
+#end def
+
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 	<head>
 		<meta charset="utf-8">
-		<title>$station.location Weather</title>
+		<title>Big Boy Weather</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<meta name="viewport" content="width=device-width">
 	</head>
@@ -23,14 +51,23 @@
 				<div class='metric'>
 					<h4 class='metric-title'>Temperature</h4>
 					<p><span class="metric-big">$current.outTemp.formatted<span class='metric-units'>$unit.label.outTemp</span></span></p>
-					<p>Heat index: <span class='heatindex'>$current.heatindex.formatted</span></p>
-					<p>Wind chill: <span class='windchill'>$current.windchill.formatted</span></p>
+					<h5>Heat index:</h5>
+					<p><span class='heatindex'>$current.heatindex.formatted</span></p>
+					<h5>Wind chill:</h5>
+					<p><span class='windchill'>$current.windchill.formatted</span></p>
+					<p class="metric-relative">
+						It's $relativeModifier($trend($time_delta=86400).outTemp, 16) $either($trend($time_delta=86400).outTemp, "warmer", "colder") than $dayPart().
+					</p>
 				</div>
 
 				<div class='metric'>
 					<h4 class='metric-title'>Humidity</h4>
 					<p><span class="metric-big">$current.outHumidity.formatted</span><span class='metric-units'>$unit.label.outHumidity</span></p>
-					<p>Dewpoint: $current.dewpoint.formatted<span class='metric-units'>$unit.label.dewpoint</span></p>
+					<h5>Dewpoint:</h5>
+					<p>$current.dewpoint.formatted<span class='metric-units'>$unit.label.dewpoint</span></p>
+					<p class="metric-relative">
+						It's $relativeModifier($trend($time_delta=86400).outHumidity, 40) $either($trend($time_delta=86400).outHumidity, "more humid", "less humid") than $dayPart().
+					</p>
 				</div>
 
 				<div class='metric'>
@@ -104,8 +141,8 @@
 			</div>
 
 			<div class='metric'>
-				<h4 class='metric-title'>Precipitation</h4>
 		#if $day.rain.sum.raw
+				<h4 class='metric-title'>Precipitation</h4>
 				<h5>Recent</h5>
 				<p><span class="metric-big">$current.rain.formatted</span><span class='metric-units'>$unit.label.rain</span></p>
 				<h5>Most intense</h5>
@@ -113,7 +150,7 @@
 				<h5>Total today</h5>
 				<p>$day.rain.sum.formatted</p>
 		#else
-				<p>No rain today!</p>
+				<h4 class='metric-title'>(No rain today)</h4>
 		#end if
 			</div>
 
@@ -152,23 +189,7 @@
 					<p>sunset:  $almanac.sunset</p>
 					<p>moon: $almanac.moon_phase</p>
 					<p><span class="moon-emoji">
-					#if $almanac.moon_index == 0
-					🌑
-					#elif $almanac.moon_index == 1
-					🌒
-					#elif $almanac.moon_index == 2
-					🌓
-					#elif $almanac.moon_index == 3
-					🌔
-					#elif $almanac.moon_index == 4
-					🌕
-					#elif $almanac.moon_index == 5
-					🌖
-					#elif $almanac.moon_index == 6
-					🌗
-					#elif $almanac.moon_index == 7
-					🌘
-					#end if
+					${('🌑', '🌒', '🌓', '🌔', '🌕', '🌖', '🌗', '🌘')[$almanac.moon_index]}
 					</span>
 					</p>
 				</div>

@@ -35,7 +35,7 @@ body {
 
 .metric h4,
 .metric h5 {
-	margin: 0 1rem 0 0;
+	margin: 0 0.5rem 0 0;
 }
 
 .metric-title {
@@ -43,6 +43,10 @@ body {
 	text-transform: uppercase;
 	font-weight: normal;
 	opacity: 0.5;
+}
+
+.metric-relative {
+	flex-basis: 100%;
 }
 
 .metric h5 {
