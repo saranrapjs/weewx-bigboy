@@ -77,17 +77,17 @@ yesterday morning
 						#if $varExists('trend')
 						#if $trend.barometer.raw is not None:
 						#if $trend.barometer.raw > 6
-									&#8679;&#8679;&#8679;
+									<span class='arrow-up'>&#8679;&#8679;&#8679;</span>
 						#elif $trend.barometer.raw > 3
-									&#8679;&#8679;
+									<span class='arrow-up'>&#8679;&#8679;</span>
 						#elif $trend.barometer.raw > 0.5
-									&#8679;
+									<span class='arrow-up'>&#8679;</span>
 						#elif $trend.barometer.raw < -6
-									&#8681;&#8681;&#8681;
+									<span class='arrow-down'>&#8681;&#8681;&#8681;</span>
 						#elif $trend.barometer.raw < -3
-									&#8681;&#8681;
+									<span class='arrow-down'>&#8681;&#8681;</span>
 						#elif $trend.barometer.raw < 0.5
-									&#8681;
+									<span class='arrow-down'>&#8681;</span>
 						#end if
 						#end if
 						#end if
@@ -98,7 +98,7 @@ yesterday morning
 				<h4 class='metric-title'>Wind</h4>
 				<p>$current.windSpeed.formatted<span class='metric-units'>$unit.label.windSpeed</span></p>
 				<p>$current.windDir.ordinal_compass ($current.windDir)</p>
-				<p>
+				<p class='wind-direction'>
 		#if $current.windDir.raw is None:
 					-
 		#else
@@ -131,9 +131,9 @@ yesterday morning
 		#if $varExists('trend')
 		#if $trend.windSpeed.raw is not None:
 		#if $trend.windSpeed.formatted > 0
-					&#8679;
+					<span class='arrow-up'>&#8679;</span>
 		#elif $trend.windSpeed.formatted < 0
-					&#8681;
+					<span class='arrow-down'>&#8681;</span>
 		#end if
 		#end if
 		#end if

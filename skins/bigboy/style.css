@@ -140,3 +140,56 @@ padding: 1rem 0;
 		display: block;
 	}
 }
+
+.wind-direction {
+	animation-duration: 3s;
+	animation-name: rotate;
+}
+
+.arrow-down,
+.arrow-up {
+	display: inline-block;
+}
+
+.arrow-up {
+	animation: up 3s infinite;
+}
+
+.arrow-down {
+	animation: down 3s infinite;
+}
+
+
+@keyframes rotate {
+  from {
+    transform:rotate(40deg);
+  }
+
+  50% {
+    transform:rotate(-40deg);
+  }
+
+  to {
+    transform:rotate(0deg);
+  }
+}
+
+@keyframes down {
+  from {
+    transform:translateY(-0.5rem);
+  }
+
+  to {
+    transform:translateY(0.5rem);
+  }
+}
+
+@keyframes up {
+  from {
+    transform:translateY(0.5rem);
+  }
+
+  to {
+    transform:translateY(-0.5rem);
+  }
+}
