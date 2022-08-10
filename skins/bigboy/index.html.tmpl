@@ -2,6 +2,9 @@
 #errorCatcher Echo
 #import random
 #def relativeModifier($num, $factor)
+#if $num.raw is None
+#return
+#end if
 #if abs($num.raw) > $factor
 ${random.choice(('a lot', 'mega', 'insanely'))}
 #elif abs($num.raw) > ($factor * 0.75)
@@ -42,7 +45,7 @@ yesterday morning
 		<header>
 			<img src="https://bigboy.us/other/bigboyweather.png" alt="Big Boy Weather" />
 			<div class='station-name'>$station.location</div>
-			<div class='station-time'>Last updated: $current.dateTime</div>
+			<div class='station-time'>Last updated: $current.dateTime | <a href="https://weather.bigboy.us/log/">weather log</a></div>
 		</header>
 
 			<h3>Current Observations</h3>
@@ -138,6 +141,9 @@ yesterday morning
 		#end if
 		#end if
 				</p>
+                                        <p class="metric-relative">
+                                                It's $relativeModifier($trend($time_delta=86400).windSpeed, 40) $either($trend($time_delta=86400).windSpeed, "windier", "less windy") than $dayPart().
+                                        </p>
 			</div>
 
 			<div class='metric'>
@@ -401,12 +407,16 @@ yesterday morning
 				</tr>
 			</tbody>
 		</table>
-
+		<div class='suns'>
+			<img src="sunrise.jpg"/>
+			<img src="sunset.jpg"/>
+		</div>
 		<footer>
 			<h4>Station info:</h4>
 			<p>altitude: $station.altitude</p>
 			<p>hardware: $station.hardware</p>
 			<p>software: weewx $station.version ($station.uptime)</p>
+			<img src="https://bigboy.us/other/never-base.jpg" height="20" />
 		</footer>
 
 		</main>

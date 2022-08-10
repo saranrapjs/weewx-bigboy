@@ -135,6 +135,15 @@ padding: 1rem 0;
 	font-weight: bold;
 }
 
+.suns {
+        display:flex;
+	padding:2rem 0;
+}
+.suns img {
+        align-self:center;
+        width:50%;
+}
+
 @media (max-width: 480px) {
 	body {
 		display: block;
