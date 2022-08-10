@@ -16,6 +16,9 @@ ${random.choice(('a bit', 'a little'))}
 #end if
 #end def
 #def either($num, $a, $b)
+#if $num.raw is None
+#return
+#end if
 #if $num.raw > 0
 $a
 #else
@@ -23,6 +26,9 @@ $b
 #end if
 #end def
 #def dayPart()
+#if $current is None
+#return
+#end if
 #set $hour = int($current.dateTime.format("%H"))
 #if $hour >= 12 and $hour <= 17
 yesterday afternoon#elif $hour >= 17 or $hour <= 5
