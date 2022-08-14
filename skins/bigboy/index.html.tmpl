@@ -44,12 +44,14 @@ yesterday morning
 		<title>Big Boy Weather</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<meta name="viewport" content="width=device-width">
+		<link rel="preload" href="https://weather.bigboy.us/inconsolata.woff" as="font" type="font/woff" crossorigin>
+		<link rel="preload" href="https://weather.bigboy.us/inconsolata-bold.woff" as="font" type="font/woff" crossorigin>
 	</head>
 	<body>
 		<main>
 
 		<header>
-			<img src="https://bigboy.us/other/bigboyweather.png" alt="Big Boy Weather" />
+			<img width="481" height="100" src="https://bigboy.us/other/bigboyweather.png" alt="Big Boy Weather" />
 			<div class='station-name'>$station.location</div>
 			<div class='station-time'>Last updated: $current.dateTime | <a href="https://weather.bigboy.us/log/">weather log</a></div>
 		</header>
@@ -209,7 +211,7 @@ yesterday morning
 		</section>
 		<section class="forecast">
 			<figure>
-				<img src="https://bigboy.us/other/weather-wizard.jpg" alt="wizard">
+				<img height="200" width="200" src="https://bigboy.us/other/weather-wizard.jpg" alt="wizard">
 			</figure>
 			<div>
 				<h3>The Forecast</h3>
@@ -422,7 +424,7 @@ yesterday morning
 			<p>altitude: $station.altitude</p>
 			<p>hardware: $station.hardware</p>
 			<p>software: weewx $station.version ($station.uptime)</p>
-			<img src="https://bigboy.us/other/never-base.jpg" height="20" />
+			<img src="https://bigboy.us/other/never-base.jpg" height="20" width="198" />
 		</footer>
 
 		</main>
@@ -430,77 +432,77 @@ yesterday morning
 		<section class='images'>
 			<nav class='images-selector'>
 				<span>Show: </span>
-				<a href="javascript://">Day</a>
+				<a href="javascript://" class="period-selected">Day</a>
 				<a href="javascript://">Week</a>
 				<a href="javascript://">Month</a>
 				<a href="javascript://">Year</a>
 			</nav>
 
-			<div class='images-set' data-period='day'>
+			<div class='images-set period-selected' data-period='day'>
 				<img src="dayinouttempdew.png" width="500" height="180" alt="temperatures" />
 				<img src="dayinouthum.png" width="500" height="180" alt="humidity" />
 				<img src="daybarometer.png" width="500" height="180" alt="barometer"/>
 				<img src="daytempchill.png" width="500" height="180" alt="heatchill" />
-				<img src="daywind.png" width="500" height="180" alt="wind" />
-				<img src="daywinddir.png" width="500" height="180" alt="wind direction" />
-				<img src="daywindvec.png" width="500" height="180" alt="wind vectors" />
-				<img src="dayrain.png" width="500" height="180" alt="rain" />
+				<img src="daywind.png" loading="lazy" width="500" height="180" alt="wind" />
+				<img src="daywinddir.png" loading="lazy" width="500" height="180" alt="wind direction" />
+				<img src="daywindvec.png" loading="lazy" width="500" height="180" alt="wind vectors" />
+				<img src="dayrain.png" loading="lazy" width="500" height="180" alt="rain" />
 				#if $day.radiation.has_data
-				<img src="dayradiation.png" width="500" height="180" alt="radiation" />
+				<img src="dayradiation.png" loading="lazy" width="500" height="180" alt="radiation" />
 				#end if
 				#if $day.UV.has_data
-				<img src="dayuv.png" width="500" height="180" alt="uv" />
+				<img src="dayuv.png" loading="lazy" width="500" height="180" alt="uv" />
 				#end if
 			</div>
 
 			<div class='images-set' data-period='week'>
-				<img src="weekinouttempdew.png" width="500" height="180" alt="temperatures" />
-				<img src="weekinouthum.png" width="500" height="180" alt="humidity" />
-				<img src="weekbarometer.png" width="500" height="180" alt="barometer"/>
-				<img src="weektempchill.png" width="500" height="180" alt="heatchill" />
-				<img src="weekwind.png" width="500" height="180" alt="wind" />
-				<img src="weekwinddir.png" width="500" height="180" alt="wind direction" />
-				<img src="weekwindvec.png" width="500" height="180" alt="wind vectors" />
-				<img src="weekrain.png" width="500" height="180" alt="rain" />
+				<img src="weekinouttempdew.png" loading="lazy" width="500" height="180" alt="temperatures" />
+				<img src="weekinouthum.png" loading="lazy" width="500" height="180" alt="humidity" />
+				<img src="weekbarometer.png" loading="lazy" width="500" height="180" alt="barometer"/>
+				<img src="weektempchill.png" loading="lazy" width="500" height="180" alt="heatchill" />
+				<img src="weekwind.png" loading="lazy" width="500" height="180" alt="wind" />
+				<img src="weekwinddir.png" loading="lazy" width="500" height="180" alt="wind direction" />
+				<img src="weekwindvec.png" loading="lazy" width="500" height="180" alt="wind vectors" />
+				<img src="weekrain.png" loading="lazy" width="500" height="180" alt="rain" />
 				#if $week.radiation.has_data
-				<img src="weekradiation.png" width="500" height="180" alt="radiation" />
+				<img src="weekradiation.png" loading="lazy" width="500" height="180" alt="radiation" />
 				#end if
 				#if $week.UV.has_data
-				<img src="weekuv.png" width="500" height="180" alt="uv" />
+				<img src="weekuv.png" loading="lazy" width="500" height="180" alt="uv" />
 				#end if
 			</div>
 
 			<div class='images-set' data-period='month'>
-				<img src="monthinouttempdew.png" width="500" height="180" alt="temperatures" />
-				<img src="monthinouthum.png" width="500" height="180" alt="humidity" />
-				<img src="monthbarometer.png" width="500" height="180" alt="barometer"/>
-				<img src="monthtempchill.png" width="500" height="180" alt="heatchill" />
-				<img src="monthwind.png" width="500" height="180" alt="wind" />
-				<img src="monthwinddir.png" width="500" height="180" alt="wind direction" />
-				<img src="monthwindvec.png" width="500" height="180" alt="wind vectors" />
-				<img src="monthrain.png" width="500" height="180" alt="rain" />
+				<img src="monthinouttempdew.png" loading="lazy" width="500" height="180" alt="temperatures" />
+				<img src="monthinouthum.png" loading="lazy" width="500" height="180" alt="humidity" />
+				<img src="monthbarometer.png" loading="lazy" width="500" height="180" alt="barometer"/>
+				<img src="monthtempchill.png" loading="lazy" width="500" height="180" alt="heatchill" />
+				<img src="monthwind.png" loading="lazy" width="500" height="180" alt="wind" />
+				<img src="monthwinddir.png" loading="lazy" width="500" height="180" alt="wind direction" />
+				<img src="monthwindvec.png" loading="lazy" width="500" height="180" alt="wind vectors" />
+				<img src="monthrain.png" loading="lazy" width="500" height="180" alt="rain" />
 				#if $month.radiation.has_data
-				<img src="monthradiation.png" width="500" height="180" alt="radiation" />
+				<img src="monthradiation.png" loading="lazy" width="500" height="180" alt="radiation" />
 				#end if
 				#if $month.UV.has_data
-				<img src="monthuv.png" width="500" height="180" alt="uv" />
+				<img src="monthuv.png" loading="lazy" width="500" height="180" alt="uv" />
 				#end if
 			</div>
 
 			<div class='images-set' data-period='year'>
-				<img src="yearinouttempdew.png" width="500" height="180" alt="temperatures" />
-				<img src="yearinouthum.png" width="500" height="180" alt="humidity" />
-				<img src="yearbarometer.png" width="500" height="180" alt="barometer"/>
-				<img src="yeartempchill.png" width="500" height="180" alt="heatchill" />
-				<img src="yearwind.png" width="500" height="180" alt="wind" />
-				<img src="yearwinddir.png" width="500" height="180" alt="wind direction" />
-				<img src="yearwindvec.png" width="500" height="180" alt="wind vectors" />
-				<img src="yearrain.png" width="500" height="180" alt="rain" />
+				<img src="yearinouttempdew.png" loading="lazy" width="500" height="180" alt="temperatures" />
+				<img src="yearinouthum.png" loading="lazy" width="500" height="180" alt="humidity" />
+				<img src="yearbarometer.png" loading="lazy" width="500" height="180" alt="barometer"/>
+				<img src="yeartempchill.png" loading="lazy" width="500" height="180" alt="heatchill" />
+				<img src="yearwind.png" loading="lazy" width="500" height="180" alt="wind" />
+				<img src="yearwinddir.png" loading="lazy" width="500" height="180" alt="wind direction" />
+				<img src="yearwindvec.png" loading="lazy" width="500" height="180" alt="wind vectors" />
+				<img src="yearrain.png" loading="lazy" width="500" height="180" alt="rain" />
 				#if $year.radiation.has_data
-				<img src="yearradiation.png" width="500" height="180" alt="radiation" />
+				<img src="yearradiation.png" loading="lazy" width="500" height="180" alt="radiation" />
 				#end if
 				#if $year.UV.has_data
-				<img src="yearuv.png" width="500" height="180" alt="uv" />
+				<img src="yearuv.png" loading="lazy" width="500" height="180" alt="uv" />
 				#end if
 			</div>
 		</section>

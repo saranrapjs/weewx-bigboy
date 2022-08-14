@@ -1,17 +1,19 @@
 @font-face {
-  font-family: 'Inconsolata';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Inconsolata'), url('inconsolata.woff') format('woff');
+	font-family: "Inconsolata";
+	font-style: normal;
+	font-weight: 400;
+	src: local("Inconsolata"),
+		url("https://weather.bigboy.us/inconsolata.woff") format("woff");
 }
 @font-face {
-  font-family: 'Inconsolata';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Inconsolata Bold'), local('Inconsolata-Bold'), url('inconsolata-bold.woff') format('woff');
+	font-family: "Inconsolata";
+	font-style: normal;
+	font-weight: 700;
+	src: local("Inconsolata Bold"), local("Inconsolata-Bold"),
+		url("https://weather.bigboy.us/inconsolata-bold.woff") format("woff");
 }
 body {
-	font-family: 'Inconsolata', monospace;
+	font-family: "Inconsolata", monospace;
 }
 
 .metric-units {
@@ -23,7 +25,7 @@ body {
 
 .metric {
 	font-size: 1rem;
-	margin:1rem 1rem 1rem 0;
+	margin: 1rem 1rem 1rem 0;
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
@@ -77,7 +79,7 @@ body {
 .almanac tbody tr td:nth-of-type(3),
 .almanac tbody tr td:nth-of-type(4) {
 	text-align: center;
-	padding:0 1rem;
+	padding: 0 1rem;
 }
 
 .almanac .break th {
@@ -92,19 +94,19 @@ body {
 }
 
 .forecast figure {
-	margin:1rem 1rem 0 0;
+	margin: 1rem 1rem 0 0;
 }
 .forecast img {
-	width:200px;
+	width: 200px;
 }
 
 .forecast pre {
 	white-space: pre-wrap;
-	clear:both;
+	clear: both;
 }
 
 footer p {
-	margin:0;
+	margin: 0;
 }
 
 body {
@@ -122,31 +124,34 @@ body {
 }
 
 .images-selector {
-padding: 1rem 0;
+	padding: 1rem 0;
 }
 
 .images-selector > a {
-	color:black;
+	color: black;
 }
 
 .images-selector > a.period-selected {
-	color:black;
+	color: black;
 	text-decoration: none;
 	font-weight: bold;
 }
 
 .suns {
-        display:flex;
-	padding:2rem 0;
+	display: flex;
+	padding: 2rem 0;
 }
 .suns img {
-        align-self:center;
-        width:50%;
+	align-self: center;
+	width: 50%;
 }
 
 @media (max-width: 480px) {
 	body {
 		display: block;
+	}
+	img {
+		max-width: 100%;
 	}
 }
 
@@ -168,37 +173,36 @@ padding: 1rem 0;
 	animation: down 3s infinite;
 }
 
-
 @keyframes rotate {
-  from {
-    transform:rotate(40deg);
-  }
+	from {
+		transform: rotate(40deg);
+	}
 
-  50% {
-    transform:rotate(-40deg);
-  }
+	50% {
+		transform: rotate(-40deg);
+	}
 
-  to {
-    transform:rotate(0deg);
-  }
+	to {
+		transform: rotate(0deg);
+	}
 }
 
 @keyframes down {
-  from {
-    transform:translateY(-0.5rem);
-  }
+	from {
+		transform: translateY(-0.5rem);
+	}
 
-  to {
-    transform:translateY(0.5rem);
-  }
+	to {
+		transform: translateY(0.5rem);
+	}
 }
 
 @keyframes up {
-  from {
-    transform:translateY(0.5rem);
-  }
+	from {
+		transform: translateY(0.5rem);
+	}
 
-  to {
-    transform:translateY(-0.5rem);
-  }
+	to {
+		transform: translateY(-0.5rem);
+	}
 }
