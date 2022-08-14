@@ -139,9 +139,9 @@ yesterday morning
 				<p>
 		#if $varExists('trend')
 		#if $trend.windSpeed.raw is not None:
-		#if $trend.windSpeed.formatted > 0
+		#if $trend.windSpeed.raw > 0
 					<span class='arrow-up'>&#8679;</span>
-		#elif $trend.windSpeed.formatted < 0
+		#elif $trend.windSpeed.raw < 0
 					<span class='arrow-down'>&#8681;</span>
 		#end if
 		#end if
