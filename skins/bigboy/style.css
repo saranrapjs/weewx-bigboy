@@ -66,6 +66,10 @@ body {
 	vertical-align: middle;
 }
 
+.table-wrapper {
+	overflow-x: scroll;
+}
+
 .almanac-date {
 	opacity: 0.3;
 	display: block;
@@ -109,29 +113,49 @@ footer p {
 	margin: 0;
 }
 
-body {
+article {
 	display: flex;
+}
+@media (max-width:600px) {
+	article {
+		display: block;
+	}
 }
 
 .images {
-	max-width: 500px;
+	margin: 0 4rem;
+}
+@media (max-width: 600px) {
+	.images {
+		margin: 0;
+	}
 }
 .images-set {
 	display: none;
 }
-.images-set.period-selected {
-	display: block;
-}
+	.images:has(input[value="day"]:checked) [data-period="day"] {
+		display: block;
+	}
+	.images:has(input[value="week"]:checked) [data-period="week"] {
+		display: block;
+	}
+	.images:has(input[value="month"]:checked) [data-period="month"] {
+		display: block;
+	}
+	.images:has(input[value="year"]:checked) [data-period="year"] {
+		display: block;
+	}
 
 .images-selector {
 	padding: 1rem 0;
 }
 
-.images-selector > a {
+.images-selector > label {
 	color: black;
+	cursor: pointer;
 }
 
-.images-selector > a.period-selected {
+.images-selector > label:has(input:checked) {
 	color: black;
 	text-decoration: none;
 	font-weight: bold;
@@ -142,8 +166,15 @@ body {
 	padding: 2rem 0;
 }
 .suns img {
-	align-self: center;
-	width: 50%;
+	max-width: calc((100vw / 2) - 0.5rem);
+}
+@media (max-width: 600px) {
+	.suns {
+		display: block;
+	}
+	.suns img {
+		max-width: calc(100vw - 1rem);
+	}
 }
 
 @media (max-width: 480px) {
