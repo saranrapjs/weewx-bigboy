@@ -26,14 +26,16 @@ $b
 #end if
 #end def
 #def dayPart()
-#if $current is None
-#return
-#end if
-#set $hour = int($current.dateTime.format("%H"))
+  #if $current is None
+    #return
+  #end if
+  #set $hour = int($current.dateTime.format("%H"))
 #if $hour >= 12 and $hour <= 17
-yesterday afternoon#elif $hour >= 17 or $hour <= 5
-last night#else
-yesterday morning
+yesterday afternoon#slurp
+#elif $hour >= 17 or $hour <= 5
+last night#slurp
+#else
+yesterday morning#slurp
 #end if
 #end def
 
@@ -66,9 +68,7 @@ yesterday morning
 					<p><span class='heatindex'>$current.heatindex.formatted</span></p>
 					<h5>Wind chill:</h5>
 					<p><span class='windchill'>$current.windchill.formatted</span></p>
-					<p class="metric-relative">
-						It's $relativeModifier($trend($time_delta=86400).outTemp, 16) $either($trend($time_delta=86400).outTemp, "warmer", "colder") than $dayPart().
-					</p>
+					<p class="metric-relative">It's $relativeModifier($trend($time_delta=86400).outTemp, 16) ${either($trend($time_delta=86400).outTemp, "warmer", "colder")} than ${dayPart()}.</p>
 				</div>
 
 				<div class='metric'>
