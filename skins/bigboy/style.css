@@ -3,14 +3,14 @@
 	font-style: normal;
 	font-weight: 400;
 	src: local("Inconsolata"),
-		url("https://weather.bigboy.us/inconsolata.woff") format("woff");
+		url("inconsolata.woff") format("woff");
 }
 @font-face {
 	font-family: "Inconsolata";
 	font-style: normal;
 	font-weight: 700;
 	src: local("Inconsolata Bold"), local("Inconsolata-Bold"),
-		url("https://weather.bigboy.us/inconsolata-bold.woff") format("woff");
+		url("inconsolata-bold.woff") format("woff");
 }
 body {
 	font-family: "Inconsolata", monospace;
@@ -92,6 +92,12 @@ body {
 
 .forecast {
 	display: flex;
+}
+
+@media (max-width:600px) {
+	.forecast {
+		display: block;
+	}
 }
 
 .forecast h3 {

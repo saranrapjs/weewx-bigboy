@@ -46,8 +46,8 @@ yesterday morning#slurp
 		<title>Big Boy Weather</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<meta name="viewport" content="width=device-width">
-		<link rel="preload" href="https://weather.bigboy.us/inconsolata.woff" as="font" type="font/woff" crossorigin>
-		<link rel="preload" href="https://weather.bigboy.us/inconsolata-bold.woff" as="font" type="font/woff" crossorigin>
+		<link rel="preload" href="/inconsolata.woff" as="font" type="font/woff" crossorigin>
+		<link rel="preload" href="/inconsolata-bold.woff" as="font" type="font/woff" crossorigin>
 	</head>
 	<body>
 		<article>
@@ -446,9 +446,9 @@ yesterday morning#slurp
 				<img src="daybarometer.png" width="500" height="180" alt="barometer"/>
 				<img src="daytempchill.png" width="500" height="180" alt="heatchill" />
 				<img src="daywind.png" loading="lazy" width="500" height="180" alt="wind" />
-				<img src="daywinddir.png" loading="lazy" width="500" height="180" alt="wind direction" />
-				<img src="daywindvec.png" loading="lazy" width="500" height="180" alt="wind vectors" />
+				#if $day.rain.sum.raw
 				<img src="dayrain.png" loading="lazy" width="500" height="180" alt="rain" />
+				#end if
 				#if $day.radiation.has_data
 				<img src="dayradiation.png" loading="lazy" width="500" height="180" alt="radiation" />
 				#end if
@@ -506,6 +506,10 @@ yesterday morning#slurp
 				#if $year.UV.has_data
 				<img src="yearuv.png" loading="lazy" width="500" height="180" alt="uv" />
 				#end if
+			</div>
+			<div>
+				<h4>Continental United States of $current.outTemp.formatted $unit.label.outTemp</h4>
+				<a href="https://weather.bigboy.us/same-temp/$current.outTemp.formatted/"><img src="https://weather.bigboy.us/same-temp/$current.outTemp.formatted/map.png?spread=3" width="500" /></a>
 			</div>
 		</section>
 		</article>
