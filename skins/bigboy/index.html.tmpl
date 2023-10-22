@@ -6,13 +6,13 @@
 #return
 #end if
 #if abs($num.raw) > $factor
-${random.choice(('a lot', 'mega', 'insanely'))}
+${random.choice(('a lot', 'mega', 'insanely'))}#slurp
 #elif abs($num.raw) > ($factor * 0.75)
-${random.choice(('much', 'a bunch', 'a good deal'))}
+${random.choice(('much', 'a bunch', 'a good deal'))}#slurp
 #elif abs($num.raw) > ($factor * 0.5)
-${random.choice(('somewhat', 'kinda', 'subtly'))}
+${random.choice(('somewhat', 'kinda', 'subtly'))}#slurp
 #else
-${random.choice(('a bit', 'a little'))}
+${random.choice(('a bit', 'a little'))}#slurp
 #end if
 #end def
 #def either($num, $a, $b)
@@ -20,9 +20,9 @@ ${random.choice(('a bit', 'a little'))}
 #return
 #end if
 #if $num.raw > 0
-$a
+$a#slurp
 #else
-$b
+$b#slurp
 #end if
 #end def
 #def dayPart()
@@ -55,7 +55,7 @@ yesterday morning#slurp
 		<header>
 			<img width="481" height="100" src="https://bigboy.us/other/bigboyweather.png" alt="Big Boy Weather" />
 			<div class='station-name'>$station.location</div>
-			<div class='station-time'>Last updated: $current.dateTime | <a href="https://weather.bigboy.us/log/">weather log</a></div>
+			<div class='station-time'>Last updated: $current.dateTime | <a href="https://regexking.info/categories/big-boy-weather.html">weather log</a></div>
 		</header>
 
 			<h3>Current Observations</h3>
@@ -182,20 +182,20 @@ yesterday morning#slurp
 
 			<div class='metric'>
 				<h4 class='metric-title'>Temperature Inside</h4>
-				<p>$current.inTemp.formatted<span class='metric-units'>$unit.label.outTemp</span></p>
+				<p>$current.extraTemp1.formatted<span class='metric-units'>$unit.label.outTemp</span></p>
 				<h5>High</h5>
-				<p>$day.inTemp.max.formatted<span class='metric-units'>$unit.label.outTemp</span></p>
+				<p>$day.extraTemp1.max.formatted<span class='metric-units'>$unit.label.outTemp</span></p>
 				<h5>Low</h5>
-				<p>$day.inTemp.min.formatted<span class='metric-units'>$unit.label.outTemp</span></p>
+				<p>$day.extraTemp1.min.formatted<span class='metric-units'>$unit.label.outTemp</span></p>
 			</div>
 
 			<div class='metric'>
 				<h4 class='metric-title'>Humidity Inside</h4>
-				<p>$current.inHumidity.formatted<span class='metric-units'>$unit.label.outHumidity</span></p>
+				<p>$current.extraHumid1.formatted<span class='metric-units'>$unit.label.outHumidity</span></p>
 				<h5>High</h5>
-				<p>$day.inHumidity.max.formatted<span class='metric-units'>$unit.label.outHumidity</span></p>
+				<p>$day.extraHumid1.max.formatted<span class='metric-units'>$unit.label.outHumidity</span></p>
 				<h5>Low</h5>
-				<p>$day.inHumidity.min.formatted<span class='metric-units'>$unit.label.outHumidity</span></p>
+				<p>$day.extraHumid1.min.formatted<span class='metric-units'>$unit.label.outHumidity</span></p>
 			</div>
 
 				<div class='metric'>
@@ -509,7 +509,7 @@ yesterday morning#slurp
 			</div>
 			<div>
 				<h4>Continental United States of $current.outTemp.formatted $unit.label.outTemp</h4>
-				<a href="https://weather.bigboy.us/same-temp/$current.outTemp.formatted/?spread=4"><img src="https://weather.bigboy.us/same-temp/$current.outTemp.formatted/map.png?spread=4" width="500" lazy /></a>
+				<a href="https://weather.bigboy.us/same-temp/$current.outTemp.formatted/?spread=2"><img src="https://weather.bigboy.us/same-temp/$current.outTemp.formatted/map.png?spread=2" width="500" lazy /></a>
 			</div>
 		</section>
 		</article>

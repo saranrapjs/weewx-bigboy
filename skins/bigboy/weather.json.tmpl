@@ -1,0 +1,52 @@
+#import random
+#def relativeModifier($num, $factor)
+#if $num.raw is None
+#return
+#end if
+#if abs($num.raw) > $factor
+${random.choice(('a lot', 'mega', 'insanely'))}#slurp
+#elif abs($num.raw) > ($factor * 0.75)
+${random.choice(('much', 'a bunch', 'a good deal'))}#slurp
+#elif abs($num.raw) > ($factor * 0.5)
+${random.choice(('somewhat', 'kinda', 'subtly'))}#slurp
+#else
+${random.choice(('a bit', 'a little'))}#slurp
+#end if
+#end def
+#def either($num, $a, $b)
+#if $num.raw is None
+#return
+#end if
+#if $num.raw > 0
+$a#slurp
+#else
+$b#slurp
+#end if
+#end def
+#def dayPart()
+  #if $current is None
+    #return
+  #end if
+  #set $hour = int($current.dateTime.format("%H"))
+#if $hour >= 12 and $hour <= 17
+yesterday afternoon#slurp
+#elif $hour >= 17 or $hour <= 5
+last night#slurp
+#else
+yesterday morning#slurp
+#end if
+#end def
+{
+    "relativeTemperature": "It's $relativeModifier($trend($time_delta=86400).outTemp, 16) ${either($trend($time_delta=86400).outTemp, "warmer", "colder")} than ${dayPart()}.",
+    #if $current.outTemp.has_data
+    "temperature": {"value": $current.outTemp.raw, "units": "$current.outTemp.format(" ").lstrip()"},
+    #end if
+    #if $current.outHumidity.has_data
+    "humidity": {"value": $current.outHumidity.raw, "units": "$current.outHumidity.format(" ").lstrip()"},
+    #end if
+    #if $current.rainRate.has_data
+    "rain rate": {"value": $current.rainRate.raw, "units": "$current.rainRate.format(" ").lstrip()"},
+    #end if
+    ## Last value can't end with a comma
+    "nonsense": null
+}
