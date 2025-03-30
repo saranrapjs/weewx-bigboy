@@ -4,8 +4,7 @@
 #def relativeModifier($num, $factor)
 #if $num.raw is None
 #return
-#end if
-#if abs($num.raw) > $factor
+#elif abs($num.raw) > $factor
 ${random.choice(('a lot', 'mega', 'insanely'))}#slurp
 #elif abs($num.raw) > ($factor * 0.75)
 ${random.choice(('much', 'a bunch', 'a good deal'))}#slurp
@@ -18,8 +17,7 @@ ${random.choice(('a bit', 'a little'))}#slurp
 #def either($num, $a, $b)
 #if $num.raw is None
 #return
-#end if
-#if $num.raw > 0
+#elif $num.raw > 0
 $a#slurp
 #else
 $b#slurp
@@ -77,7 +75,7 @@ yesterday morning#slurp
 					<h5>Dewpoint:</h5>
 					<p>$current.dewpoint.formatted<span class='metric-units'>$unit.label.dewpoint</span></p>
 					<p class="metric-relative">
-						It's $relativeModifier($trend($time_delta=86400).outHumidity, 40) $either($trend($time_delta=86400).outHumidity, "more humid", "less humid") than $dayPart().#if $current.dewpoint.raw > 70 then " The dewpoint is <span style=\"color:red;\">nasty</span>." else "" # 
+						It's $relativeModifier($trend($time_delta=86400).outHumidity, 40) $either($trend($time_delta=86400).outHumidity, "more humid", "less humid") than $dayPart().#if $current.dewpoint.raw is not None and $current.dewpoint.raw > 70 then " The dewpoint is <span style=\"color:red;\">nasty</span>." else "" # 
 					</p>
 				</div>
 
@@ -218,6 +216,7 @@ yesterday morning#slurp
 				<pre>
 				#include raw $Extras.forecast_path
 				</pre>
+				<a href="https://forecast.bigboy.us">(read the full forecast here)</a>
 			</div>
 		</section>
 
@@ -529,6 +528,7 @@ yesterday morning#slurp
 			<p>hardware: $station.hardware</p>
 			<p>software: weewx $station.version ($station.uptime)</p>
 			<img alt="Never base important decisions from this website" src="https://bigboy.us/other/never-base.jpg" height="20" width="198" loading="lazy" />
+			<img alt="This data is not to be used for protection of life and property" src="https://bigboy.us/other/life-and-property.jpg" height="23" width="472" loading="lazy" />
 		</footer>
 	</body>
 </html>
